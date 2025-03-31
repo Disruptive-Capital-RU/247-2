@@ -51,6 +51,20 @@ export default defineSchema({
     createdAt: v.number(),
   }),
 
+  quotes: defineTable({
+    requestId: v.id("serviceRequests"),
+    amount: v.number(),
+    currency: v.string(),
+    description: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("approved"),
+      v.literal("rejected")
+    ),
+    createdAt: v.number()
+  }).index("by_requestId", ["requestId"]),
+  
+
   receipts: defineTable({
     userId: v.string(),
     requestId: v.id("serviceRequests"),
@@ -60,3 +74,11 @@ export default defineSchema({
     paidAt: v.number(),
   }),
 });
+serviceRequests: defineTable({
+    userId: v.string(),
+    message: v.string(),
+    status: v.string(),
+    quote: v.optional(v.string()),
+    createdAt: v.number()
+  }).index("by_userId", ["userId"]),
+  

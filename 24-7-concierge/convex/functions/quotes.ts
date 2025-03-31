@@ -29,3 +29,14 @@ export const approveQuote = mutation({
     });
   },
 });
+import { query, v } from "convex/server";
+
+export const getQuotesByRequestId = query({
+  args: { requestId: v.id("serviceRequests") },
+  handler: async (ctx, { requestId }) => {
+    return await ctx.db
+      .query("quotes")
+      .withIndex("by_requestId", (q) => q.eq("requestId", requestId))
+      .collect();
+  }
+});

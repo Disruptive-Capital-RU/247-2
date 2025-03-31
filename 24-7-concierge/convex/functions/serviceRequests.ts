@@ -50,3 +50,15 @@ export const updateRequestStatus = mutation({
     return await ctx.db.patch(id, update);
   },
 });
+export const listUserRequests = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    return await ctx.db
+      .query("serviceRequests")
+      .withIndex("by_userId", (q) => q.eq("userId", identity.subject))
+      .collect();
+  }
+});
