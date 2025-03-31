@@ -1,7 +1,7 @@
-import { defineSchema, defineTable } from "convex/server";
-import { v } from "convex/values";
+import { defineSchema, defineTable, v } from "convex/schema";
 
 export default defineSchema({
+  // --- Existing Tables ---
   serviceRequests: defineTable({
     userId: v.string(),
     message: v.string(),
@@ -34,5 +34,28 @@ export default defineSchema({
     status: v.string(),
     description: v.string(),
     createdAt: v.number(),
+  }),
+
+  // --- New Tables ---
+  quotes: defineTable({
+    requestId: v.id("serviceRequests"),
+    amount: v.number(),
+    currency: v.string(),
+    description: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("approved"),
+      v.literal("rejected")
+    ),
+    createdAt: v.number(),
+  }),
+
+  receipts: defineTable({
+    userId: v.string(),
+    requestId: v.id("serviceRequests"),
+    quoteId: v.id("quotes"),
+    amountPaid: v.number(),
+    paymentRef: v.string(),
+    paidAt: v.number(),
   }),
 });
