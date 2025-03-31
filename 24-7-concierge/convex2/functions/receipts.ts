@@ -1,5 +1,6 @@
 // convex/functions/receipts.ts
-import { mutation, v } from "convex/server";
+import { mutation } from "../_generated/server";
+import { v } from "convex/values";
 
 export const logReceipt = mutation({
   args: {
@@ -7,16 +8,16 @@ export const logReceipt = mutation({
     requestId: v.id("serviceRequests"),
     quoteId: v.id("quotes"),
     amountPaid: v.number(),
-    paymentRef: v.string()
+    paymentRef: v.string(),
   },
   handler: async (ctx, args) => {
     await ctx.db.insert("receipts", {
       ...args,
-      paidAt: Date.now()
+      paidAt: Date.now(),
     });
 
-    await ctx.db.patch("serviceRequests", args.requestId, {
-      status: "completed"
+    await ctx.db.patch(args.requestId, {
+      status: "completed",
     });
-  }
+  },
 });
