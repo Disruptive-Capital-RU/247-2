@@ -41,16 +41,34 @@
   }
 }
 
-@layer components {
-  .apple-button-primary {
-    @apply bg-[var(--apple-blue)] text-white rounded-full px-6 py-3 text-sm font-medium transition-all hover:brightness-90;
-  }
+.apple-button-primary {
+  background-color: var(--apple-blue);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.apple-button-primary:hover {
+  filter: brightness(0.9);
+}
 
-  .apple-button-secondary {
-    @apply bg-[var(--apple-light-gray)] text-[var(--foreground)] rounded-full px-6 py-3 text-sm font-medium transition-all hover:brightness-95;
-  }
+.apple-button-secondary {
+  background-color: var(--apple-light-gray);
+  color: var(--foreground);
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.apple-button-secondary:hover {
+  filter: brightness(0.95);
+}
 
-  .apple-section {
-    @apply py-20 px-8 max-w-screen-lg mx-auto;
-  }
+.apple-section {
+  padding: 5rem 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
 }

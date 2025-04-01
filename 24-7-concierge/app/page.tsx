@@ -31,12 +31,18 @@ export default function Home() {
               Contact
             </Link>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
             <Link
               href="/sign-in"
               className="text-sm font-medium hover:text-[var(--apple-blue)] transition-colors"
             >
               Sign In
+            </Link>
+            <Link
+              href="/sign-up"
+              className="bg-[var(--apple-blue)] text-white rounded-full px-4 py-1.5 text-sm font-medium transition-all hover:brightness-90"
+            >
+              Get Started
             </Link>
           </div>
         </div>
@@ -137,6 +143,40 @@ export default function Home() {
               Discreet service with advanced security measures to protect your
               privacy.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Exclusivity Section */}
+      <section
+        id="exclusivity"
+        className="apple-section bg-[var(--apple-light-gray)]"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-semibold mb-8">
+            Experience True Exclusivity
+          </h2>
+          <p className="text-lg text-[var(--apple-gray)] mb-12">
+            Our concierge service offers unprecedented access to the world's
+            most exclusive experiences, tailored to your personal preferences.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[var(--background)] p-8 rounded-2xl shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">
+                Personalized Service
+              </h3>
+              <p className="text-[var(--apple-gray)]">
+                Your dedicated concierge learns your preferences and anticipates
+                your needs, providing a truly personalized experience.
+              </p>
+            </div>
+            <div className="bg-[var(--background)] p-8 rounded-2xl shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Global Network</h3>
+              <p className="text-[var(--apple-gray)]">
+                Leverage our worldwide network of partners to access exceptional
+                experiences and services not available to the general public.
+              </p>
+            </div>
           </div>
         </div>
       </section>
